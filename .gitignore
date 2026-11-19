@@ -12,7 +12,15 @@ config.local.json
 .env.*
 
 # 运行时数据
+config.json
+*.ldb
 *.log
+logs/
+
+# 打包产物与临时文件
+*.ezbot
+.DS_Store
+*.tmp
 
 # EasyBot 官方 SDK 类型声明(第三方内容, 不随本仓库分发)
 easybot-sdk/
