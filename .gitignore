@@ -1,0 +1,18 @@
+# 依赖与产物（使用者自己构建）
+node_modules/
+dist/
+ai_chat.js
+*.logs.zip
+
+# ★ 绝不要提交任何密钥/令牌
+overlay*.json
+*.secret.json
+config.local.json
+.env
+.env.*
+
+# 运行时数据
+*.log
+
+# EasyBot 官方 SDK 类型声明(第三方内容, 不随本仓库分发)
+easybot-sdk/

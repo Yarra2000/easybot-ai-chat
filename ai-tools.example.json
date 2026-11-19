@@ -1,0 +1,61 @@
+{
+  "_说明": [
+    "这是给『其它 EasyBot 插件』用的工具声明模板。",
+    "把本文件复制到你自己插件的目录下, 改名为 ai-tools.json, 并改成你自己的工具即可。",
+    "AI 对话助手在启用时会自动扫描 plugins/*/ai-tools.json 并把这些能力注册成大模型可调用的工具。",
+    "如果不想用文件约定, 也可以在自己的插件里用 network.post 向工具网关 /register 动态注册(见 README)。",
+    "callback 三种类型: http / bridge-rpc / alias"
+  ],
+  "tools": [
+    {
+      "name": "sign_in",
+      "description": "给指定玩家签到, 返回签到结果与连续签到天数。",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "player": { "type": "string", "description": "玩家名" }
+        },
+        "required": ["player"]
+      },
+      "callback": {
+        "type": "http",
+        "url": "http://127.0.0.1:18888/tool/sign_in",
+        "method": "POST",
+        "headers": {
+          "X-Plugin-Token": "换成你自己的令牌"
+        }
+      }
+    },
+    {
+      "name": "query_coins",
+      "description": "查询玩家的金币数量。",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "player": { "type": "string", "description": "玩家名" }
+        },
+        "required": ["player"]
+      },
+      "callback": {
+        "type": "http",
+        "url": "http://127.0.0.1:18888/tool/query_coins",
+        "method": "POST"
+      }
+    },
+    {
+      "name": "get_server_date",
+      "description": "调用服务端扩展的方法获取服务器时间。",
+      "parameters": {
+        "type": "object",
+        "properties": {},
+        "required": []
+      },
+      "callback": {
+        "type": "bridge-rpc",
+        "serverToken": "",
+        "identifier": "bridge:test",
+        "method": "get_date"
+      }
+    }
+  ]
+}

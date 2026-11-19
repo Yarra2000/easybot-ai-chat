@@ -1,0 +1,27 @@
+{
+  "name": "AI 对话助手",
+  "version": "1.8.3",
+  "plugin_id": "easybot_ai_chat",
+  "author": "Yarra2000",
+  "description": "仿 MaiBot 的拟人化大模型对话插件：人设/记忆/分段回复/触发策略，并支持把 EasyBot 其它插件与服务端扩展注册为工具供大模型调用。",
+  "tags": [
+    "AI",
+    "对话",
+    "大模型",
+    "工具调用",
+    "拟人化"
+  ],
+  "entry": "ai_chat.js",
+  "contents": "# AI 对话助手\n\n一个仿 MaiBot 的大模型对话插件，接入任意 OpenAI 兼容接口（DeepSeek / OpenAI / Moonshot / 通义 / Ollama 等）。\n\n## 它能做什么\n\n- **拟人化聊天**：打字延迟、把长回复拆成几条短消息发出、随机引用与表情、冷却与频率限制\n- **有人设**：名字、身份、性格、说话风格、背景、额外规则，都可在 WebUI 里改\n- **有记忆**：短期上下文（每个群/每个人独立）+ 长期记忆（可自动从对话中抽取）\n- **懂分寸**：群聊里听得到所有人说话，但只有 @我 / 叫名字 / 关键词 / 回复我 / 连续对话 才会开口\n- **能干活**：大模型可以调用工具\n\n## 把其它插件变成 AI 的工具\n\n三种接入方式，任选：\n\n1. **HTTP 注册（最通用）**：其它插件向本插件的工具网关 `POST /register` 注册自己的 HTTP 接口\n2. **ai-tools.json 约定文件**：在自己的插件目录放一个 `ai-tools.json`，本插件启动时自动发现\n3. **服务端扩展 RPC**：直接调用服务器上 EasyBot 扩展的方法（`bridge-rpc`）\n\n内置工具：查看在线服务器/玩家、执行服务器命令、全服广播、查询 PAPI 变量、调用任意扩展的 RPC 方法等。\n\n## 快速开始\n\n1. 把本插件目录放进 `EasyBot/plugins/`，重启 EasyBot\n2. 打开 WebUI 中的「AI 对话助手」面板\n3. 在插件配置里填写 **接口地址** 与 **API Key**\n4. 群里 @它 或叫它的名字即可\n\n详细说明见插件目录下的 `README.md`。",
+  "links": [
+    {
+      "name": "EasyBot 插件开发文档",
+      "url": "https://docs.inectar.cn/docs/easybot/develop/plugin/"
+    },
+    {
+      "name": "EasyBot SDK 下载",
+      "url": "https://files.inectar.cn/easybot_plugin_sdk"
+    }
+  ],
+  "icon": "icon.png"
+}
